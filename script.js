@@ -57,7 +57,7 @@ console.log(map([10, 20, 30], function (n) {
 console.log("Написать собственную реализацию функции filter");
 
 let filter = function(arr, callback, thisArg) {
-    filteredArr = [];
+    let filteredArr = [];
     for (let i = 0; i < arr.length; i++) {
         if (callback.call(thisArg, arr[i], i, arr)) {
             filteredArr.push(arr[i]);
@@ -67,5 +67,36 @@ let filter = function(arr, callback, thisArg) {
 };
 
 console.log(filter([1, 2, 3, 4, 5, 6],function(num) {
+    return num % 2 === 0;
+}));
+
+
+console.log("Написать собственную реализацию функции some");
+
+let some = function(arr, callback, thisArg) {
+    for (let i = 0; i < arr.length; i++) {
+        if (callback.call(thisArg, arr[i], i, arr)) {
+            return true;
+        }
+    }
+    return false;
+};
+
+console.log(some([1, 2, 3, 4, 5], function(num) {
+    return num % 2 === 0;
+}));
+
+console.log("Написать собственную реализацию функции every");
+
+let every = function(arr, callback, thisArg) {
+    for (let i = 0; i < arr.length; i++) {
+        if (!callback.call(thisArg, arr[i], i, arr)) {
+            return false;
+        }
+    }
+    return true;
+};
+
+console.log(every([1, 2, 3, 4, 5], function(num) {
     return num % 2 === 0;
 }));
